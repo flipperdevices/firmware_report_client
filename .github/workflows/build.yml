@@ -2,6 +2,8 @@ name: 'Build docker image'
 
 on:
   push:
+    branches:
+      - dev
     tags:
       - '*'
 
@@ -10,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: [self-hosted,FlipperZeroShell]
+    runs-on: ubuntu-22.04
     steps:
       - name: 'Checkout code'
         uses: actions/checkout@v3

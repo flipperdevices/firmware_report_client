@@ -47,6 +47,7 @@ jobs:
           docker push "$IMAGE_NAME:$IMAGE_TAG"
 
       - name: 'Trigger k8s to use new image'
+        if: ${{ steps.tag.outputs.image_tag != '0.0.0' }}
         uses: peter-evans/repository-dispatch@v2
         with:
           repository: ${{ secrets.INFRASTRUCTURE_REPO }}
